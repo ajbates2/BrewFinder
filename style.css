@@ -2,27 +2,38 @@
     box-sizing: border-box;
   }
   
-  body {
+body {
     font-family: 'Roboto', sans-serif;
-  }
-  
-  button, input[type="text"] {
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+}
+button, input[type="text"] {
     padding: 5px;
-  }
+}
   
-  button:hover {
+button:hover {
     cursor: pointer;
-  }
+}
   
-  .container {
-    max-width: 600px;
+.container {
     margin: 0 auto;
-  }
+    text-align: center;
+}
   
-  .error-message {
+.error-message {
       color: red;
-  }
+}
   
-  .hidden {
+.hidden {
     display: none;
-  }
+}
