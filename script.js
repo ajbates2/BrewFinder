@@ -10,7 +10,7 @@ function formatQueryParams(params) {
 function displayResults(responseJson) {
       $('#result').html(`<h3>${responseJson.name}</h3>
       <a href="https://www.google.com/maps/dir/?api=1&destination=${responseJson.latitude},${responseJson.longitude}" target="_blank">Directions</a>
-      <a href="${responseJson.website_url}">website</a>
+      <a href="${responseJson.website_url}" target="_blank">website</a>
       `)
     };
 
