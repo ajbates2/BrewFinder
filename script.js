@@ -72,7 +72,9 @@ function placeResource(responseJson) {
       });
       marker.addListener('click', function() {
         $('#result').removeClass('hidden');
-        displayResults(responseJson[i])
+        displayResults(responseJson[i]);
+        map.setCenter(marker.getPosition());
+        map.setZoom(15);
       });
       map.addListener('click', function() {
         $('#result').addClass('hidden');
