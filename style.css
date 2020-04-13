@@ -30,6 +30,9 @@ button:hover {
   position: absolute;
   z-index: 10;
   background-color: white;
+  left: 25%;
+  right: 25%;
+  top: 25%;
 }
   
 .error-message {

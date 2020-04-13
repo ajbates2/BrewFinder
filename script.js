@@ -46,14 +46,18 @@ function initMap() {
   let mpls = {lat: 45, lng: -93.2650}
   let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
-    center: mpls
+    center: mpls,
+    styles: initMapStyle,
+    disableDefaultUI: true
   });
 }
 
 function placeResource(responseJson) {
   let map = new google.maps.Map(document.getElementById('map'), {
     center: findCenter(responseJson),
-    zoom: 11
+    zoom: 13,
+    styles: resultMapStyle,
+    disableDefaultUI: true
   });
   for (let i = 0; i < responseJson.length; i++){
     if (responseJson[i].latitude && responseJson[i].longitude) {
@@ -61,7 +65,8 @@ function placeResource(responseJson) {
       let marker = new google.maps.Marker({
         position: coords,
         map: map,
-        title: responseJson[i].name
+        title: responseJson[i].name,
+        icon: 'hop.svg'
       });
       marker.addListener('click', function() {
         $('#result').removeClass('hidden');
