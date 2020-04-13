@@ -100,7 +100,7 @@ h1 {
   color: white;
   text-align: center;
   width: 223px;
-  margin-top: 268px;
+  margin-top: 280px;
   margin-left: 5px;
   padding: 20px 20px 45px;
   border-radius: 10px;
@@ -127,10 +127,19 @@ h1 {
 
 #js-form input {
   margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #17263C;
+  padding: 7px;
+  background-color: white;
 }
 
 #js-form label {
   padding: 0 3px 2px;
+}
+
+#js-form input[type="submit"] {
+  border: none;
 }
 
 .error-message {
