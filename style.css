@@ -13,10 +13,9 @@ html, body {
 }
 
 #map {
-  height: 500px;
-  width: 500px;
-  margin: 0 auto;
+  height: 100%;
 }
+
 button, input[type="text"] {
     padding: 5px;
 }
@@ -26,8 +25,11 @@ button:hover {
 }
   
 .container {
-    margin: 0 auto;
-    text-align: center;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
 }
   
 .error-message {

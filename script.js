@@ -8,21 +8,18 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
-  $('#results-list').empty();
-  for (let i = 0; i < responseJson.length; i++){
-    $('#results-list').append(
-      `<li><h3>${responseJson[i].name}</h3>
-      <p>${responseJson[i].brewery_type}</p>
-      <a href="${responseJson[i].website_url}">website</a>
-      </li>`
-    )};
-  $('#results').removeClass('hidden');
-};
+      $('#result').html(`<h3>${responseJson.name}</h3>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${responseJson.latitude},${responseJson.longitude}" target="_blank">Directions</a>
+      <a href="${responseJson.website_url}">website</a>
+      `)
+    };
 
-function getResource(searchTerm) {
+
+function getResource(city, state) {
   const params = {
-    by_city: searchTerm
+    by_city: city,
+    by_state: state,
+    per_page: 50
   };
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
@@ -37,28 +34,47 @@ function getResource(searchTerm) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    const searchTerm = $('#js-search-term').val();
-    getResource(searchTerm);
+    const city = $('#js-city').val();
+    const state = $('#js-state').val();
+    getResource(city, state);
   });
 }
 
 $(watchForm);
 
 function initMap() {
+  let mpls = {lat: 45, lng: -93.2650}
   let map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 44.977, lng: -93.265},
-    zoom: 12
+    zoom: 12,
+    center: mpls
   });
 }
 
 function placeResource(responseJson) {
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: findCenter(responseJson),
+    zoom: 11
+  });
   for (let i = 0; i < responseJson.length; i++){
-    let coords = [responseJson[i].latitude, responseJson[i].longitude];
-    console.log(coords);
-    let latLng = new google.maps.LatLng(coords);
-    let marker = new google.maps.Marker({
-      position: latLng,
-      map: map
-});
-}}
+    if (responseJson[i].latitude && responseJson[i].longitude) {
+      let coords = {lat: parseFloat(responseJson[i].latitude), lng: parseFloat(responseJson[i].longitude)};
+      let marker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        title: responseJson[i].name
+      });
+      marker.addListener('click', function() {
+        $('#result').removeClass('hidden');
+        displayResults(responseJson[i])
+      })
+  }}
+}
+
+function findCenter(responseJson) {
+  for (let i = 0; i < responseJson.length; i++){
+    if (responseJson[i].latitude && responseJson[i].longitude) {
+      return {lat: parseFloat(responseJson[i].latitude), lng: parseFloat(responseJson[i].longitude)};
+    }
+  }
+}
 
