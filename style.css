@@ -14,6 +14,10 @@ html, body {
 
 #map {
   height: 100%;
+  grid-column-start: 1;
+  grid-column-end: span 3;
+  grid-row-start: 1;
+  grid-row-end: span 4;
 }
 
 button, input[type="text"] {
@@ -24,17 +28,70 @@ button:hover {
     cursor: pointer;
 }
   
-.container {
-  margin: 0 auto;
-  text-align: center;
+main {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-auto-rows: auto;
   position: absolute;
-  z-index: 10;
-  background-color: white;
-  left: 25%;
-  right: 25%;
-  top: 25%;
+  width: 100%;
+  height: 100%;
 }
-  
+
+.title-home {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  justify-self: center;
+  align-self: end;
+  z-index: 1;
+}
+
+.form-home {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  justify-self: center;
+  align-self: start;
+}
+
+.title-after {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  justify-self: center;
+  align-self: end;
+  z-index: 1;
+}
+
+.form-after {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  justify-self: center;
+  align-self: start;
+  z-index: 1;
+}
+
+.results {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  justify-self: center;
+  align-self: start;
+  z-index: 1;
+}
+
+#js-form {
+  display: inline-grid;
+  z-index: 1;
+}
+
 .error-message {
       color: red;
 }

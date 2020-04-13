@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrewFinder</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h1>BrewFinder</h1>
 
-        <form id="js-form">
-            <input type="text" name="city" id="js-city" placeholder="what city?">
-            <input type="text" name="state" id="js-state" minlength="3" placeholder="Which State?(full state name)">
+<body>
+    <main>
+        <div id="map"></div>
+        <h1 class="title-home">BrewFinder</h1>
+        <form id="js-form" class="form-home">
+            <label for="city">What city?</label>
+            <input type="text" name="city" id="js-city">
+            <label for="state">Which state?</label>
+            <input type="text" name="state" id="js-state" minlength="3" placeholder="full state name">
             <input type="submit" value="Go!">
         </form>
-        <p id="result" class="hidden"></p>
-        <p id="js-error-message" class="error-message"></p>
-    </div>
-    <div id="map"></div>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <section id="result" class="hidden results"></section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="store.js"></script>
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe4FTwPUmFTXLaXAqMZCGEHX1r-ZHs5LU&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe4FTwPUmFTXLaXAqMZCGEHX1r-ZHs5LU&callback=initMap"
+        async defer></script>
 </body>
+
 </html>

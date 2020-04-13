@@ -36,6 +36,8 @@ function watchForm() {
     event.preventDefault();
     const city = $('#js-city').val();
     const state = $('#js-state').val();
+    $('.title-home').addClass('title-after')
+    $('.form-home').addClass('form-after')
     getResource(city, state);
   });
 }
@@ -56,7 +58,7 @@ function placeResource(responseJson) {
   let map = new google.maps.Map(document.getElementById('map'), {
     center: findCenter(responseJson),
     zoom: 13,
-    styles: resultMapStyle,
+    styles: initMapStyle,
     disableDefaultUI: true
   });
   for (let i = 0; i < responseJson.length; i++){
@@ -71,7 +73,10 @@ function placeResource(responseJson) {
       marker.addListener('click', function() {
         $('#result').removeClass('hidden');
         displayResults(responseJson[i])
-      })
+      });
+      map.addListener('click', function() {
+        $('#result').addClass('hidden');
+      });
   }}
 }
 
