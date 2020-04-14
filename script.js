@@ -39,8 +39,9 @@ function watchForm() {
     event.preventDefault();
     const city = $('#js-city').val();
     const state = $('#js-state').val();
-    $('.title-home').addClass('title-after')
-    $('.form-home').addClass('form-after')
+    $('.title-home').addClass('title-after');
+    $('.form-home').addClass('form-after');
+    $('.hide').addClass('hidden');
     getResource(city, state);
   });
 }

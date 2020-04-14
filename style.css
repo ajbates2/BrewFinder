@@ -101,7 +101,7 @@ h1 {
   color: white;
   text-align: center;
   width: 223px;
-  margin-top: 280px;
+  margin-top: 247px;
   margin-left: 5px;
   padding: 20px 20px 45px;
   border-radius: 10px;
@@ -119,8 +119,6 @@ h1 {
   display: inline-grid;
   z-index: 1;
   color: white;
-  font-size: larger;
-  font-style: italic;
   background-color: #17263C;
   padding: 20px;
   border-radius: 10px;
@@ -137,10 +135,16 @@ h1 {
 
 #js-form label {
   padding: 0 3px 2px;
+  font-style: italic;
 }
 
 #js-form input[type="submit"] {
   border: none;
+}
+
+#js-form p {
+  text-align: center;
+  font-size: larger;
 }
 
 .error-message {
