@@ -41,7 +41,6 @@ main {
 
 h1 {
   font-family: 'Bungee Shade', cursive;
-  color: white;
 }
 
 .title-home {
@@ -52,6 +51,7 @@ h1 {
   justify-self: center;
   align-self: end;
   z-index: 1;
+  color: #17263C;
 }
 
 .form-home {
@@ -74,6 +74,7 @@ h1 {
   margin: 0;
   padding: 0 100%;
   background-color: #17263C;
+  color: white;
 }
 
 .form-after {
