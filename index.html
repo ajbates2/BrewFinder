@@ -16,12 +16,13 @@
         <form id="js-form" class="form-home">
             <p class="hide">Let's find some Taprooms!</p>
             <label for="js-city" class="hide">What city?</label>
-            <input type="text" name="city" id="js-city" placeholder="Minneapolis">
+            <input type="text" name="city" id="js-city" placeholder="Minneapolis" required>
             <label for="js-state" class="hide">Which state?</label>
             <input type="text" name="state" id="js-state" minlength="3" placeholder="Minnesota">
             <input type="submit" value="Go!">
         </form>
         <section id="result" class="hidden results"></section>
+        <p class="error"></p>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

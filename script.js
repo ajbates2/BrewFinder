@@ -10,10 +10,9 @@ function formatQueryParams(params) {
 
 //formats data from OpenBreweryDB
 function displayResults(responseJson) {
-  $('#result').html(`<h3>${responseJson.name}</h3>
+  return `<h3>${responseJson.name}</h3>
       <a href="https://www.google.com/maps/dir/?api=1&destination=${responseJson.latitude},${responseJson.longitude}" target="_blank">Directions</a>
-      <a href="${responseJson.website_url}" target="_blank">website</a>
-      `)
+      <a href="${responseJson.website_url}" target="_blank">website</a>`
 };
 
 //fetchs data from OpenBreweryDB
@@ -25,12 +24,16 @@ function getResource(city, state) {
   };
   const queryString = formatQueryParams(params)
   const url = searchURL + '?' + queryString;
-  console.log(url);
 
   fetch(url)
-    .then(response => response.json())
-    .then(responseJson => placeResource(responseJson))
-    .catch(error => console.log(error.message));
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+  .then(responseJson => placeResource(responseJson))
+  .catch(error => $('.error').text(`Something went wrong: ${error.message}`));
 }
 
 //watches for submit event to perform styling actions and fetches the searched term
@@ -50,8 +53,8 @@ $(watchForm);
 
 //initializes blank map on page load
 function initMap() {
-  let mpls = { lat: 45, lng: -93.2650 }
-  let map = new google.maps.Map(document.getElementById('map'), {
+  const mpls = { lat: 45, lng: -93.2650 }
+  const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: mpls,
     styles: initMapStyle,
@@ -76,14 +79,16 @@ function placeResource(responseJson) {
         title: responseJson[i].name,
         icon: 'hop.svg'
       });
+      let infoWindow = new google.maps.InfoWindow({
+        content: displayResults(responseJson[i])
+      });
       marker.addListener('click', function () {
-        $('#result').removeClass('hidden');
-        displayResults(responseJson[i]);
+        infoWindow.open(map, marker);
         map.setCenter(marker.getPosition());
         map.setZoom(14);
       });
       map.addListener('click', function () {
-        $('#result').addClass('hidden');
+        infoWindow.close();
       });
     }
   }
