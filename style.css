@@ -77,13 +77,14 @@ h1 {
   grid-column-end: span 3;
   grid-row-start: 1;
   grid-row-end: 1;
-  justify-self: center;
   align-self: start;
   z-index: 1;
   margin: 0;
-  padding: 20px 100%;
+  padding: 20px;
   background-color: #17263C;
   color: white;
+  width: -webkit-fill-available;
+  text-align: center;
 }
 
 .form-after {
