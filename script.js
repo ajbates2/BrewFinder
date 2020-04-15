@@ -10,9 +10,11 @@ function formatQueryParams(params) {
 
 //formats data from OpenBreweryDB
 function displayResults(responseJson) {
-  return `<h3>${responseJson.name}</h3>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=${responseJson.latitude},${responseJson.longitude}" target="_blank">Directions</a>
-      <a href="${responseJson.website_url}" target="_blank">website</a>`
+  return `<div class="window-content">
+      <h3>${responseJson.name}</h3>
+      <a href="${responseJson.website_url}" target="_blank" class="links">Website</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${responseJson.latitude},${responseJson.longitude}" target="_blank" class="links">Directions</a>
+      </div>`
 };
 
 //fetchs data from OpenBreweryDB
@@ -32,8 +34,8 @@ function getResource(city, state) {
       }
       throw new Error(response.statusText);
     })
-  .then(responseJson => placeResource(responseJson))
-  .catch(error => $('.error').text(`Something went wrong: ${error.message}`));
+    .then(responseJson => placeResource(responseJson))
+    .catch(error => $('.error').text(`Something went wrong: ${error.message}`).removeClass('hidden'));
 }
 
 //watches for submit event to perform styling actions and fetches the searched term
@@ -42,7 +44,6 @@ function watchForm() {
     event.preventDefault();
     const city = $('#js-city').val();
     const state = $('#js-state').val();
-    $('.title-home').addClass('title-after');
     $('.form-home').addClass('form-after');
     $('.hide').addClass('hidden');
     getResource(city, state);

@@ -28,6 +28,28 @@ button, input[type="text"] {
 button:hover {
     cursor: pointer;
 }
+
+.window-content {
+  padding: 10px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.window-content a {
+  text-decoration: none;
+}
+
+.window-content .links {
+  color: white;
+  background-color: #17263C;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 5px 5px;
+}
+
+.window-content h3 {
+  color: #17263C;
+}
   
 main {
   display: grid;
@@ -38,31 +60,19 @@ main {
   height: 100%;
 }
 
-h1 {
-  font-family: 'Bungee Shade', cursive;
-}
-
-.title-home {
+.form-home {
   grid-column-start: 2;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 2;
   justify-self: center;
-  align-self: end;
-  z-index: 1;
-  color: #17263C;
-}
-
-.form-home {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 3;
-  justify-self: center;
   align-self: start;
+  padding: 15px 50px 34.2px;
+  row-gap: 10px;
 }
 
-.title-after {
+h1 {
+  font-family: 'Bungee Shade', cursive;
   grid-column-start: 1;
   grid-column-end: span 3;
   grid-row-start: 1;
@@ -86,32 +96,8 @@ h1 {
   z-index: 1;
   margin-top: 86px;
   margin-left: 5px;
-}
-
-.results {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: span 3;
-  justify-self: start;
-  align-self: start;
-  z-index: 1;
-  background-color: #17263C;
-  color: white;
-  text-align: center;
-  width: 223px;
-  margin-top: 247px;
-  margin-left: 5px;
-  padding: 20px 20px 45px;
-  border-radius: 10px;
-}
-
-.results a {
-  text-decoration: none;
-  color: #17263C;
-  background-color: white;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 10px;
+  row-gap: 10px;
 }
 
 .error {
@@ -119,6 +105,9 @@ h1 {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: span 3;
+  z-index: 1;
+  background-color: black;
+  color: white;
 }
 
 #js-form {
@@ -126,12 +115,10 @@ h1 {
   z-index: 1;
   color: white;
   background-color: #17263C;
-  padding: 20px;
   border-radius: 10px;
 }
 
 #js-form input {
-  margin-bottom: 10px;
   border: none;
   border-radius: 5px;
   color: #17263C;
@@ -140,7 +127,6 @@ h1 {
 }
 
 #js-form label {
-  padding: 0 3px 2px;
   font-style: italic;
 }
 
@@ -153,10 +139,18 @@ h1 {
   font-size: larger;
 }
 
-.error-message {
-      color: red;
-}
-  
 .hidden {
     display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-after {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    grid-row-start: 4;
+    grid-row-end:  4;
+    margin: 0 auto;
+    align-self: center;
+    width: 95%;
+  }
 }
